@@ -4,6 +4,9 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <!-- 配置生成器 -->
 <generatorConfiguration>
+    <classPathEntry
+            location="/Users/haifeng/.m2/repository/mysql/mysql-connector-java/8.0.15/mysql-connector-java-8.0.15.jar"/>
+
     <context id="DB2Tables" targetRuntime="MyBatis3">
 
         <commentGenerator>
@@ -14,9 +17,9 @@
 
         <!-- 数据库链接URL，用户名、密码 -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3306/sb_mbg_demo"
+                        connectionURL="jdbc:mysql://localhost:3306/label"
                         userId="root"
-                        password="root">
+                        password="Madhouse">
         </jdbcConnection>
 
         <!-- 类型转换 -->
@@ -46,7 +49,7 @@
                enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
             <property name="useActualColumnNames" value="false"/>
             <!-- 数据库表主键 -->
-            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+<!--            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
         </table>
     </context>
 
