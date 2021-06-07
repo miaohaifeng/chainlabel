@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.happy.video.mapper.ExchangeInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.happy.video.pojo.ExchangeInfo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="no" property="no" jdbcType="VARCHAR" />
+    <result column="name_zh" property="nameZh" jdbcType="VARCHAR" />
+    <result column="name_en" property="nameEn" jdbcType="VARCHAR" />
+    <result column="supervisor_status" property="supervisorStatus" jdbcType="VARCHAR" />
+    <result column="platform_token" property="platformToken" jdbcType="VARCHAR" />
+    <result column="registered_country" property="registeredCountry" jdbcType="VARCHAR" />
+    <result column="registered_country_icon_url" property="registeredCountryIconUrl" jdbcType="VARCHAR" />
+    <result column="token_number" property="tokenNumber" jdbcType="VARCHAR" />
+    <result column="set_up_time" property="setUpTime" jdbcType="VARCHAR" />
+    <result column="intro" property="intro" jdbcType="VARCHAR" />
+    <result column="website" property="website" jdbcType="VARCHAR" />
+    <result column="labels" property="labels" jdbcType="VARCHAR" />
+    <result column="exchange_types" property="exchangeTypes" jdbcType="VARCHAR" />
+    <result column="social_medias" property="socialMedias" jdbcType="VARCHAR" />
+    <result column="group_relationship" property="groupRelationship" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, no, name_zh, name_en, supervisor_status, platform_token, registered_country, 
+    registered_country_icon_url, token_number, set_up_time, intro, website, labels, exchange_types, 
+    social_medias, group_relationship, create_time, update_time
+  </sql>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from exchange_info
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from exchange_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from exchange_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.happy.video.pojo.ExchangeInfo" >
+    insert into exchange_info (id, no, name_zh, 
+      name_en, supervisor_status, platform_token, 
+      registered_country, registered_country_icon_url, 
+      token_number, set_up_time, intro, 
+      website, labels, exchange_types, 
+      social_medias, group_relationship, create_time, 
+      update_time)
+    values (#{id,jdbcType=INTEGER}, #{no,jdbcType=VARCHAR}, #{nameZh,jdbcType=VARCHAR}, 
+      #{nameEn,jdbcType=VARCHAR}, #{supervisorStatus,jdbcType=VARCHAR}, #{platformToken,jdbcType=VARCHAR}, 
+      #{registeredCountry,jdbcType=VARCHAR}, #{registeredCountryIconUrl,jdbcType=VARCHAR}, 
+      #{tokenNumber,jdbcType=VARCHAR}, #{setUpTime,jdbcType=VARCHAR}, #{intro,jdbcType=VARCHAR}, 
+      #{website,jdbcType=VARCHAR}, #{labels,jdbcType=VARCHAR}, #{exchangeTypes,jdbcType=VARCHAR}, 
+      #{socialMedias,jdbcType=VARCHAR}, #{groupRelationship,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.happy.video.pojo.ExchangeInfo" >
+    insert into exchange_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="no != null" >
+        no,
+      </if>
+      <if test="nameZh != null" >
+        name_zh,
+      </if>
+      <if test="nameEn != null" >
+        name_en,
+      </if>
+      <if test="supervisorStatus != null" >
+        supervisor_status,
+      </if>
+      <if test="platformToken != null" >
+        platform_token,
+      </if>
+      <if test="registeredCountry != null" >
+        registered_country,
+      </if>
+      <if test="registeredCountryIconUrl != null" >
+        registered_country_icon_url,
+      </if>
+      <if test="tokenNumber != null" >
+        token_number,
+      </if>
+      <if test="setUpTime != null" >
+        set_up_time,
+      </if>
+      <if test="intro != null" >
+        intro,
+      </if>
+      <if test="website != null" >
+        website,
+      </if>
+      <if test="labels != null" >
+        labels,
+      </if>
+      <if test="exchangeTypes != null" >
+        exchange_types,
+      </if>
+      <if test="socialMedias != null" >
+        social_medias,
+      </if>
+      <if test="groupRelationship != null" >
+        group_relationship,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="no != null" >
+        #{no,jdbcType=VARCHAR},
+      </if>
+      <if test="nameZh != null" >
+        #{nameZh,jdbcType=VARCHAR},
+      </if>
+      <if test="nameEn != null" >
+        #{nameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="supervisorStatus != null" >
+        #{supervisorStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="platformToken != null" >
+        #{platformToken,jdbcType=VARCHAR},
+      </if>
+      <if test="registeredCountry != null" >
+        #{registeredCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="registeredCountryIconUrl != null" >
+        #{registeredCountryIconUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="tokenNumber != null" >
+        #{tokenNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="setUpTime != null" >
+        #{setUpTime,jdbcType=VARCHAR},
+      </if>
+      <if test="intro != null" >
+        #{intro,jdbcType=VARCHAR},
+      </if>
+      <if test="website != null" >
+        #{website,jdbcType=VARCHAR},
+      </if>
+      <if test="labels != null" >
+        #{labels,jdbcType=VARCHAR},
+      </if>
+      <if test="exchangeTypes != null" >
+        #{exchangeTypes,jdbcType=VARCHAR},
+      </if>
+      <if test="socialMedias != null" >
+        #{socialMedias,jdbcType=VARCHAR},
+      </if>
+      <if test="groupRelationship != null" >
+        #{groupRelationship,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.happy.video.pojo.ExchangeInfo" >
+    update exchange_info
+    <set >
+      <if test="no != null" >
+        no = #{no,jdbcType=VARCHAR},
+      </if>
+      <if test="nameZh != null" >
+        name_zh = #{nameZh,jdbcType=VARCHAR},
+      </if>
+      <if test="nameEn != null" >
+        name_en = #{nameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="supervisorStatus != null" >
+        supervisor_status = #{supervisorStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="platformToken != null" >
+        platform_token = #{platformToken,jdbcType=VARCHAR},
+      </if>
+      <if test="registeredCountry != null" >
+        registered_country = #{registeredCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="registeredCountryIconUrl != null" >
+        registered_country_icon_url = #{registeredCountryIconUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="tokenNumber != null" >
+        token_number = #{tokenNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="setUpTime != null" >
+        set_up_time = #{setUpTime,jdbcType=VARCHAR},
+      </if>
+      <if test="intro != null" >
+        intro = #{intro,jdbcType=VARCHAR},
+      </if>
+      <if test="website != null" >
+        website = #{website,jdbcType=VARCHAR},
+      </if>
+      <if test="labels != null" >
+        labels = #{labels,jdbcType=VARCHAR},
+      </if>
+      <if test="exchangeTypes != null" >
+        exchange_types = #{exchangeTypes,jdbcType=VARCHAR},
+      </if>
+      <if test="socialMedias != null" >
+        social_medias = #{socialMedias,jdbcType=VARCHAR},
+      </if>
+      <if test="groupRelationship != null" >
+        group_relationship = #{groupRelationship,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.happy.video.pojo.ExchangeInfo" >
+    update exchange_info
+    set no = #{no,jdbcType=VARCHAR},
+      name_zh = #{nameZh,jdbcType=VARCHAR},
+      name_en = #{nameEn,jdbcType=VARCHAR},
+      supervisor_status = #{supervisorStatus,jdbcType=VARCHAR},
+      platform_token = #{platformToken,jdbcType=VARCHAR},
+      registered_country = #{registeredCountry,jdbcType=VARCHAR},
+      registered_country_icon_url = #{registeredCountryIconUrl,jdbcType=VARCHAR},
+      token_number = #{tokenNumber,jdbcType=VARCHAR},
+      set_up_time = #{setUpTime,jdbcType=VARCHAR},
+      intro = #{intro,jdbcType=VARCHAR},
+      website = #{website,jdbcType=VARCHAR},
+      labels = #{labels,jdbcType=VARCHAR},
+      exchange_types = #{exchangeTypes,jdbcType=VARCHAR},
+      social_medias = #{socialMedias,jdbcType=VARCHAR},
+      group_relationship = #{groupRelationship,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

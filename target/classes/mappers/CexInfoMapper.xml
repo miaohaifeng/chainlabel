@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.happy.video.mapper.CexInfoMapper">
+    <resultMap id="BaseResultMap" type="com.happy.video.pojo.CexInfo">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="rank" property="rank" jdbcType="VARCHAR"/>
+        <result column="platform" property="platform" jdbcType="VARCHAR"/>
+        <result column="platform_name" property="platformName" jdbcType="VARCHAR"/>
+        <result column="exchange_coinlogo" property="exchangeCoinlogo" jdbcType="VARCHAR"/>
+        <result column="launchedtime" property="launchedtime" jdbcType="VARCHAR"/>
+        <result column="countrycode" property="countrycode" jdbcType="VARCHAR"/>
+        <result column="country" property="country" jdbcType="VARCHAR"/>
+        <result column="official_url" property="officialUrl" jdbcType="VARCHAR"/>
+        <result column="alternate_url" property="alternateUrl" jdbcType="VARCHAR"/>
+        <result column="assets" property="assets" jdbcType="VARCHAR"/>
+        <result column="codenum" property="codenum" jdbcType="VARCHAR"/>
+        <result column="pairnum" property="pairnum" jdbcType="VARCHAR"/>
+        <result column="auth_kyc" property="authKyc" jdbcType="VARCHAR"/>
+        <result column="supportchinese" property="supportchinese" jdbcType="VARCHAR"/>
+        <result column="fee_url" property="feeUrl" jdbcType="VARCHAR"/>
+        <result column="riskreserve" property="riskreserve" jdbcType="VARCHAR"/>
+        <result column="quantization" property="quantization" jdbcType="VARCHAR"/>
+        <result column="hotindex" property="hotindex" jdbcType="VARCHAR"/>
+        <result column="intro" property="intro" jdbcType="VARCHAR"/>
+        <result column="labels_id" property="labelsId" jdbcType="VARCHAR"/>
+        <result column="labels" property="labels" jdbcType="VARCHAR"/>
+        <result column="weibo_url" property="weiboUrl" jdbcType="VARCHAR"/>
+        <result column="twitter_url" property="twitterUrl" jdbcType="VARCHAR"/>
+        <result column="facebook_url" property="facebookUrl" jdbcType="VARCHAR"/>
+        <result column="telegramlink" property="telegramlink" jdbcType="VARCHAR"/>
+        <result column="redditlink" property="redditlink" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, platform, platform_name, exchange_coinlogo, launchedtime,
+    official_url, alternate_url, assets, codenum, pairnum, auth_kyc, supportchinese,
+    fee_url, riskreserve, quantization, hotindex, intro, labels_id, labels, weibo_url, 
+    twitter_url, facebook_url, telegramlink, redditlink
+  </sql>
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from cex_info
+    </select>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from cex_info
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from cex_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="com.happy.video.pojo.CexInfo">
+    insert into cex_info (id, rank, platform, 
+      platform_name, exchange_coinlogo, launchedtime, 
+      countrycode, country, official_url, 
+      alternate_url, assets, codenum, 
+      pairnum, auth_kyc, supportchinese, 
+      fee_url, riskreserve, quantization, 
+      hotindex, intro, labels_id, 
+      labels, weibo_url, twitter_url, 
+      facebook_url, telegramlink, redditlink
+      )
+    values (#{id,jdbcType=INTEGER}, #{rank,jdbcType=VARCHAR}, #{platform,jdbcType=VARCHAR}, 
+      #{platformName,jdbcType=VARCHAR}, #{exchangeCoinlogo,jdbcType=VARCHAR}, #{launchedtime,jdbcType=VARCHAR}, 
+      #{countrycode,jdbcType=VARCHAR}, #{country,jdbcType=VARCHAR}, #{officialUrl,jdbcType=VARCHAR}, 
+      #{alternateUrl,jdbcType=VARCHAR}, #{assets,jdbcType=VARCHAR}, #{codenum,jdbcType=VARCHAR}, 
+      #{pairnum,jdbcType=VARCHAR}, #{authKyc,jdbcType=VARCHAR}, #{supportchinese,jdbcType=VARCHAR}, 
+      #{feeUrl,jdbcType=VARCHAR}, #{riskreserve,jdbcType=VARCHAR}, #{quantization,jdbcType=VARCHAR}, 
+      #{hotindex,jdbcType=VARCHAR}, #{intro,jdbcType=VARCHAR}, #{labelsId,jdbcType=VARCHAR}, 
+      #{labels,jdbcType=VARCHAR}, #{weiboUrl,jdbcType=VARCHAR}, #{twitterUrl,jdbcType=VARCHAR}, 
+      #{facebookUrl,jdbcType=VARCHAR}, #{telegramlink,jdbcType=VARCHAR}, #{redditlink,jdbcType=VARCHAR}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="com.happy.video.pojo.CexInfo">
+        insert into cex_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="rank != null">
+                rank,
+            </if>
+            <if test="platform != null">
+                platform,
+            </if>
+            <if test="platformName != null">
+                platform_name,
+            </if>
+            <if test="exchangeCoinlogo != null">
+                exchange_coinlogo,
+            </if>
+            <if test="launchedtime != null">
+                launchedtime,
+            </if>
+            <if test="countrycode != null">
+                countrycode,
+            </if>
+            <if test="country != null">
+                country,
+            </if>
+            <if test="officialUrl != null">
+                official_url,
+            </if>
+            <if test="alternateUrl != null">
+                alternate_url,
+            </if>
+            <if test="assets != null">
+                assets,
+            </if>
+            <if test="codenum != null">
+                codenum,
+            </if>
+            <if test="pairnum != null">
+                pairnum,
+            </if>
+            <if test="authKyc != null">
+                auth_kyc,
+            </if>
+            <if test="supportchinese != null">
+                supportchinese,
+            </if>
+            <if test="feeUrl != null">
+                fee_url,
+            </if>
+            <if test="riskreserve != null">
+                riskreserve,
+            </if>
+            <if test="quantization != null">
+                quantization,
+            </if>
+            <if test="hotindex != null">
+                hotindex,
+            </if>
+            <if test="intro != null">
+                intro,
+            </if>
+            <if test="labelsId != null">
+                labels_id,
+            </if>
+            <if test="labels != null">
+                labels,
+            </if>
+            <if test="weiboUrl != null">
+                weibo_url,
+            </if>
+            <if test="twitterUrl != null">
+                twitter_url,
+            </if>
+            <if test="facebookUrl != null">
+                facebook_url,
+            </if>
+            <if test="telegramlink != null">
+                telegramlink,
+            </if>
+            <if test="redditlink != null">
+                redditlink,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="rank != null">
+                #{rank,jdbcType=VARCHAR},
+            </if>
+            <if test="platform != null">
+                #{platform,jdbcType=VARCHAR},
+            </if>
+            <if test="platformName != null">
+                #{platformName,jdbcType=VARCHAR},
+            </if>
+            <if test="exchangeCoinlogo != null">
+                #{exchangeCoinlogo,jdbcType=VARCHAR},
+            </if>
+            <if test="launchedtime != null">
+                #{launchedtime,jdbcType=VARCHAR},
+            </if>
+            <if test="countrycode != null">
+                #{countrycode,jdbcType=VARCHAR},
+            </if>
+            <if test="country != null">
+                #{country,jdbcType=VARCHAR},
+            </if>
+            <if test="officialUrl != null">
+                #{officialUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="alternateUrl != null">
+                #{alternateUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="assets != null">
+                #{assets,jdbcType=VARCHAR},
+            </if>
+            <if test="codenum != null">
+                #{codenum,jdbcType=VARCHAR},
+            </if>
+            <if test="pairnum != null">
+                #{pairnum,jdbcType=VARCHAR},
+            </if>
+            <if test="authKyc != null">
+                #{authKyc,jdbcType=VARCHAR},
+            </if>
+            <if test="supportchinese != null">
+                #{supportchinese,jdbcType=VARCHAR},
+            </if>
+            <if test="feeUrl != null">
+                #{feeUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="riskreserve != null">
+                #{riskreserve,jdbcType=VARCHAR},
+            </if>
+            <if test="quantization != null">
+                #{quantization,jdbcType=VARCHAR},
+            </if>
+            <if test="hotindex != null">
+                #{hotindex,jdbcType=VARCHAR},
+            </if>
+            <if test="intro != null">
+                #{intro,jdbcType=VARCHAR},
+            </if>
+            <if test="labelsId != null">
+                #{labelsId,jdbcType=VARCHAR},
+            </if>
+            <if test="labels != null">
+                #{labels,jdbcType=VARCHAR},
+            </if>
+            <if test="weiboUrl != null">
+                #{weiboUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="twitterUrl != null">
+                #{twitterUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="facebookUrl != null">
+                #{facebookUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="telegramlink != null">
+                #{telegramlink,jdbcType=VARCHAR},
+            </if>
+            <if test="redditlink != null">
+                #{redditlink,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.happy.video.pojo.CexInfo">
+        update cex_info
+        <set>
+            <if test="rank != null">
+                rank = #{rank,jdbcType=VARCHAR},
+            </if>
+            <if test="platform != null">
+                platform = #{platform,jdbcType=VARCHAR},
+            </if>
+            <if test="platformName != null">
+                platform_name = #{platformName,jdbcType=VARCHAR},
+            </if>
+            <if test="exchangeCoinlogo != null">
+                exchange_coinlogo = #{exchangeCoinlogo,jdbcType=VARCHAR},
+            </if>
+            <if test="launchedtime != null">
+                launchedtime = #{launchedtime,jdbcType=VARCHAR},
+            </if>
+            <if test="countrycode != null">
+                countrycode = #{countrycode,jdbcType=VARCHAR},
+            </if>
+            <if test="country != null">
+                country = #{country,jdbcType=VARCHAR},
+            </if>
+            <if test="officialUrl != null">
+                official_url = #{officialUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="alternateUrl != null">
+                alternate_url = #{alternateUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="assets != null">
+                assets = #{assets,jdbcType=VARCHAR},
+            </if>
+            <if test="codenum != null">
+                codenum = #{codenum,jdbcType=VARCHAR},
+            </if>
+            <if test="pairnum != null">
+                pairnum = #{pairnum,jdbcType=VARCHAR},
+            </if>
+            <if test="authKyc != null">
+                auth_kyc = #{authKyc,jdbcType=VARCHAR},
+            </if>
+            <if test="supportchinese != null">
+                supportchinese = #{supportchinese,jdbcType=VARCHAR},
+            </if>
+            <if test="feeUrl != null">
+                fee_url = #{feeUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="riskreserve != null">
+                riskreserve = #{riskreserve,jdbcType=VARCHAR},
+            </if>
+            <if test="quantization != null">
+                quantization = #{quantization,jdbcType=VARCHAR},
+            </if>
+            <if test="hotindex != null">
+                hotindex = #{hotindex,jdbcType=VARCHAR},
+            </if>
+            <if test="intro != null">
+                intro = #{intro,jdbcType=VARCHAR},
+            </if>
+            <if test="labelsId != null">
+                labels_id = #{labelsId,jdbcType=VARCHAR},
+            </if>
+            <if test="labels != null">
+                labels = #{labels,jdbcType=VARCHAR},
+            </if>
+            <if test="weiboUrl != null">
+                weibo_url = #{weiboUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="twitterUrl != null">
+                twitter_url = #{twitterUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="facebookUrl != null">
+                facebook_url = #{facebookUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="telegramlink != null">
+                telegramlink = #{telegramlink,jdbcType=VARCHAR},
+            </if>
+            <if test="redditlink != null">
+                redditlink = #{redditlink,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.happy.video.pojo.CexInfo">
+    update cex_info
+    set rank = #{rank,jdbcType=VARCHAR},
+      platform = #{platform,jdbcType=VARCHAR},
+      platform_name = #{platformName,jdbcType=VARCHAR},
+      exchange_coinlogo = #{exchangeCoinlogo,jdbcType=VARCHAR},
+      launchedtime = #{launchedtime,jdbcType=VARCHAR},
+      countrycode = #{countrycode,jdbcType=VARCHAR},
+      country = #{country,jdbcType=VARCHAR},
+      official_url = #{officialUrl,jdbcType=VARCHAR},
+      alternate_url = #{alternateUrl,jdbcType=VARCHAR},
+      assets = #{assets,jdbcType=VARCHAR},
+      codenum = #{codenum,jdbcType=VARCHAR},
+      pairnum = #{pairnum,jdbcType=VARCHAR},
+      auth_kyc = #{authKyc,jdbcType=VARCHAR},
+      supportchinese = #{supportchinese,jdbcType=VARCHAR},
+      fee_url = #{feeUrl,jdbcType=VARCHAR},
+      riskreserve = #{riskreserve,jdbcType=VARCHAR},
+      quantization = #{quantization,jdbcType=VARCHAR},
+      hotindex = #{hotindex,jdbcType=VARCHAR},
+      intro = #{intro,jdbcType=VARCHAR},
+      labels_id = #{labelsId,jdbcType=VARCHAR},
+      labels = #{labels,jdbcType=VARCHAR},
+      weibo_url = #{weiboUrl,jdbcType=VARCHAR},
+      twitter_url = #{twitterUrl,jdbcType=VARCHAR},
+      facebook_url = #{facebookUrl,jdbcType=VARCHAR},
+      telegramlink = #{telegramlink,jdbcType=VARCHAR},
+      redditlink = #{redditlink,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

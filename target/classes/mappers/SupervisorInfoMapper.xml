@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.happy.video.mapper.SupervisorInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.happy.video.pojo.SupervisorInfo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="exchange_no" property="exchangeNo" jdbcType="VARCHAR" />
+    <result column="exchange_name" property="exchangeName" jdbcType="VARCHAR" />
+    <result column="license_release_unit" property="licenseReleaseUnit" jdbcType="VARCHAR" />
+    <result column="license_release_unit_desc" property="licenseReleaseUnitDesc" jdbcType="VARCHAR" />
+    <result column="license_release_unit_icon_url" property="licenseReleaseUnitIconUrl" jdbcType="VARCHAR" />
+    <result column="current_supervise_status" property="currentSuperviseStatus" jdbcType="VARCHAR" />
+    <result column="licence_type" property="licenceType" jdbcType="VARCHAR" />
+    <result column="supervise_country" property="superviseCountry" jdbcType="VARCHAR" />
+    <result column="supervise_country_icon_url" property="superviseCountryIconUrl" jdbcType="VARCHAR" />
+    <result column="supervisor_number" property="supervisorNumber" jdbcType="VARCHAR" />
+    <result column="hold_licence_institution_icon" property="holdLicenceInstitutionIcon" jdbcType="VARCHAR" />
+    <result column="hold_licence_institution" property="holdLicenceInstitution" jdbcType="VARCHAR" />
+    <result column="start_time" property="startTime" jdbcType="VARCHAR" />
+    <result column="end_time" property="endTime" jdbcType="VARCHAR" />
+    <result column="hold_licence_institution_phone" property="holdLicenceInstitutionPhone" jdbcType="VARCHAR" />
+    <result column="hold_licence_institution_email" property="holdLicenceInstitutionEmail" jdbcType="VARCHAR" />
+    <result column="hold_licence_institution_website" property="holdLicenceInstitutionWebsite" jdbcType="VARCHAR" />
+    <result column="hold_licence_institution_address" property="holdLicenceInstitutionAddress" jdbcType="VARCHAR" />
+    <result column="licence_number" property="licenceNumber" jdbcType="VARCHAR" />
+    <result column="licence_file_url" property="licenceFileUrl" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, exchange_no, exchange_name, license_release_unit, license_release_unit_desc, 
+    license_release_unit_icon_url, current_supervise_status, licence_type, supervise_country, 
+    supervise_country_icon_url, supervisor_number, hold_licence_institution_icon, hold_licence_institution, 
+    start_time, end_time, hold_licence_institution_phone, hold_licence_institution_email, 
+    hold_licence_institution_website, hold_licence_institution_address, licence_number, 
+    licence_file_url, create_time, update_time
+  </sql>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from supervisor_info
+  </select>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from supervisor_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from supervisor_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.happy.video.pojo.SupervisorInfo" >
+    insert into supervisor_info (id, exchange_no, exchange_name, 
+      license_release_unit, license_release_unit_desc, 
+      license_release_unit_icon_url, current_supervise_status, 
+      licence_type, supervise_country, supervise_country_icon_url, 
+      supervisor_number, hold_licence_institution_icon, 
+      hold_licence_institution, start_time, end_time, 
+      hold_licence_institution_phone, hold_licence_institution_email, 
+      hold_licence_institution_website, hold_licence_institution_address, 
+      licence_number, licence_file_url, create_time, 
+      update_time)
+    values (#{id,jdbcType=INTEGER}, #{exchangeNo,jdbcType=VARCHAR}, #{exchangeName,jdbcType=VARCHAR}, 
+      #{licenseReleaseUnit,jdbcType=VARCHAR}, #{licenseReleaseUnitDesc,jdbcType=VARCHAR}, 
+      #{licenseReleaseUnitIconUrl,jdbcType=VARCHAR}, #{currentSuperviseStatus,jdbcType=VARCHAR}, 
+      #{licenceType,jdbcType=VARCHAR}, #{superviseCountry,jdbcType=VARCHAR}, #{superviseCountryIconUrl,jdbcType=VARCHAR}, 
+      #{supervisorNumber,jdbcType=VARCHAR}, #{holdLicenceInstitutionIcon,jdbcType=VARCHAR}, 
+      #{holdLicenceInstitution,jdbcType=VARCHAR}, #{startTime,jdbcType=VARCHAR}, #{endTime,jdbcType=VARCHAR}, 
+      #{holdLicenceInstitutionPhone,jdbcType=VARCHAR}, #{holdLicenceInstitutionEmail,jdbcType=VARCHAR}, 
+      #{holdLicenceInstitutionWebsite,jdbcType=VARCHAR}, #{holdLicenceInstitutionAddress,jdbcType=VARCHAR}, 
+      #{licenceNumber,jdbcType=VARCHAR}, #{licenceFileUrl,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.happy.video.pojo.SupervisorInfo" >
+    insert into supervisor_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="exchangeNo != null" >
+        exchange_no,
+      </if>
+      <if test="exchangeName != null" >
+        exchange_name,
+      </if>
+      <if test="licenseReleaseUnit != null" >
+        license_release_unit,
+      </if>
+      <if test="licenseReleaseUnitDesc != null" >
+        license_release_unit_desc,
+      </if>
+      <if test="licenseReleaseUnitIconUrl != null" >
+        license_release_unit_icon_url,
+      </if>
+      <if test="currentSuperviseStatus != null" >
+        current_supervise_status,
+      </if>
+      <if test="licenceType != null" >
+        licence_type,
+      </if>
+      <if test="superviseCountry != null" >
+        supervise_country,
+      </if>
+      <if test="superviseCountryIconUrl != null" >
+        supervise_country_icon_url,
+      </if>
+      <if test="supervisorNumber != null" >
+        supervisor_number,
+      </if>
+      <if test="holdLicenceInstitutionIcon != null" >
+        hold_licence_institution_icon,
+      </if>
+      <if test="holdLicenceInstitution != null" >
+        hold_licence_institution,
+      </if>
+      <if test="startTime != null" >
+        start_time,
+      </if>
+      <if test="endTime != null" >
+        end_time,
+      </if>
+      <if test="holdLicenceInstitutionPhone != null" >
+        hold_licence_institution_phone,
+      </if>
+      <if test="holdLicenceInstitutionEmail != null" >
+        hold_licence_institution_email,
+      </if>
+      <if test="holdLicenceInstitutionWebsite != null" >
+        hold_licence_institution_website,
+      </if>
+      <if test="holdLicenceInstitutionAddress != null" >
+        hold_licence_institution_address,
+      </if>
+      <if test="licenceNumber != null" >
+        licence_number,
+      </if>
+      <if test="licenceFileUrl != null" >
+        licence_file_url,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="exchangeNo != null" >
+        #{exchangeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="exchangeName != null" >
+        #{exchangeName,jdbcType=VARCHAR},
+      </if>
+      <if test="licenseReleaseUnit != null" >
+        #{licenseReleaseUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="licenseReleaseUnitDesc != null" >
+        #{licenseReleaseUnitDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="licenseReleaseUnitIconUrl != null" >
+        #{licenseReleaseUnitIconUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="currentSuperviseStatus != null" >
+        #{currentSuperviseStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="licenceType != null" >
+        #{licenceType,jdbcType=VARCHAR},
+      </if>
+      <if test="superviseCountry != null" >
+        #{superviseCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="superviseCountryIconUrl != null" >
+        #{superviseCountryIconUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="supervisorNumber != null" >
+        #{supervisorNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="holdLicenceInstitutionIcon != null" >
+        #{holdLicenceInstitutionIcon,jdbcType=VARCHAR},
+      </if>
+      <if test="holdLicenceInstitution != null" >
+        #{holdLicenceInstitution,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null" >
+        #{startTime,jdbcType=VARCHAR},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=VARCHAR},
+      </if>
+      <if test="holdLicenceInstitutionPhone != null" >
+        #{holdLicenceInstitutionPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="holdLicenceInstitutionEmail != null" >
+        #{holdLicenceInstitutionEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="holdLicenceInstitutionWebsite != null" >
+        #{holdLicenceInstitutionWebsite,jdbcType=VARCHAR},
+      </if>
+      <if test="holdLicenceInstitutionAddress != null" >
+        #{holdLicenceInstitutionAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="licenceNumber != null" >
+        #{licenceNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="licenceFileUrl != null" >
+        #{licenceFileUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.happy.video.pojo.SupervisorInfo" >
+    update supervisor_info
+    <set >
+      <if test="exchangeNo != null" >
+        exchange_no = #{exchangeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="exchangeName != null" >
+        exchange_name = #{exchangeName,jdbcType=VARCHAR},
+      </if>
+      <if test="licenseReleaseUnit != null" >
+        license_release_unit = #{licenseReleaseUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="licenseReleaseUnitDesc != null" >
+        license_release_unit_desc = #{licenseReleaseUnitDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="licenseReleaseUnitIconUrl != null" >
+        license_release_unit_icon_url = #{licenseReleaseUnitIconUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="currentSuperviseStatus != null" >
+        current_supervise_status = #{currentSuperviseStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="licenceType != null" >
+        licence_type = #{licenceType,jdbcType=VARCHAR},
+      </if>
+      <if test="superviseCountry != null" >
+        supervise_country = #{superviseCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="superviseCountryIconUrl != null" >
+        supervise_country_icon_url = #{superviseCountryIconUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="supervisorNumber != null" >
+        supervisor_number = #{supervisorNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="holdLicenceInstitutionIcon != null" >
+        hold_licence_institution_icon = #{holdLicenceInstitutionIcon,jdbcType=VARCHAR},
+      </if>
+      <if test="holdLicenceInstitution != null" >
+        hold_licence_institution = #{holdLicenceInstitution,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null" >
+        start_time = #{startTime,jdbcType=VARCHAR},
+      </if>
+      <if test="endTime != null" >
+        end_time = #{endTime,jdbcType=VARCHAR},
+      </if>
+      <if test="holdLicenceInstitutionPhone != null" >
+        hold_licence_institution_phone = #{holdLicenceInstitutionPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="holdLicenceInstitutionEmail != null" >
+        hold_licence_institution_email = #{holdLicenceInstitutionEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="holdLicenceInstitutionWebsite != null" >
+        hold_licence_institution_website = #{holdLicenceInstitutionWebsite,jdbcType=VARCHAR},
+      </if>
+      <if test="holdLicenceInstitutionAddress != null" >
+        hold_licence_institution_address = #{holdLicenceInstitutionAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="licenceNumber != null" >
+        licence_number = #{licenceNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="licenceFileUrl != null" >
+        licence_file_url = #{licenceFileUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.happy.video.pojo.SupervisorInfo" >
+    update supervisor_info
+    set exchange_no = #{exchangeNo,jdbcType=VARCHAR},
+      exchange_name = #{exchangeName,jdbcType=VARCHAR},
+      license_release_unit = #{licenseReleaseUnit,jdbcType=VARCHAR},
+      license_release_unit_desc = #{licenseReleaseUnitDesc,jdbcType=VARCHAR},
+      license_release_unit_icon_url = #{licenseReleaseUnitIconUrl,jdbcType=VARCHAR},
+      current_supervise_status = #{currentSuperviseStatus,jdbcType=VARCHAR},
+      licence_type = #{licenceType,jdbcType=VARCHAR},
+      supervise_country = #{superviseCountry,jdbcType=VARCHAR},
+      supervise_country_icon_url = #{superviseCountryIconUrl,jdbcType=VARCHAR},
+      supervisor_number = #{supervisorNumber,jdbcType=VARCHAR},
+      hold_licence_institution_icon = #{holdLicenceInstitutionIcon,jdbcType=VARCHAR},
+      hold_licence_institution = #{holdLicenceInstitution,jdbcType=VARCHAR},
+      start_time = #{startTime,jdbcType=VARCHAR},
+      end_time = #{endTime,jdbcType=VARCHAR},
+      hold_licence_institution_phone = #{holdLicenceInstitutionPhone,jdbcType=VARCHAR},
+      hold_licence_institution_email = #{holdLicenceInstitutionEmail,jdbcType=VARCHAR},
+      hold_licence_institution_website = #{holdLicenceInstitutionWebsite,jdbcType=VARCHAR},
+      hold_licence_institution_address = #{holdLicenceInstitutionAddress,jdbcType=VARCHAR},
+      licence_number = #{licenceNumber,jdbcType=VARCHAR},
+      licence_file_url = #{licenceFileUrl,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
