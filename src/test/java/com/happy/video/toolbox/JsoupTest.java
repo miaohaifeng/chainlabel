@@ -1,5 +1,6 @@
 package com.happy.video.toolbox;
 
+import lombok.SneakyThrows;
 import org.apache.commons.io.FileUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -8,6 +9,7 @@ import org.jsoup.select.Elements;
 import org.junit.Test;
 
 import java.io.File;
+import java.io.IOException;
 
 /**
  * Author itcast
@@ -15,6 +17,9 @@ import java.io.File;
  * Desc 演示使用Jsoup实现页面解析
  */
 public class JsoupTest {
+
+
+
     @Test
     public void testGetDoument() throws Exception {
         //Document doc = Jsoup.connect("http://www.itcast.cn/").get();
