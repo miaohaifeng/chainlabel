@@ -30,7 +30,7 @@ public class HttpClientTest {
         CloseableHttpClient httpClient = HttpClients.createDefault();
 
         //2.创建HttpGet请求并进行相关设置
-        HttpGet httpGet = new HttpGet("http://www.itcast.cn/?username=java");
+        HttpGet httpGet = new HttpGet("https://defi-tracker.dappradar.com/api/ethereum/defi/all?currency=USD&limit=50&page=1&sort=tvlInFiat&order=desc");
         httpGet.setHeader("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.97 Safari/537.36");
 
         //3.发起请求

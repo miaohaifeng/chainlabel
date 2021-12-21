@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.happy.video.mapper.DebankDataMapper" >
+  <resultMap id="BaseResultMap" type="com.happy.video.pojo.DebankData" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="chain" property="chain" jdbcType="VARCHAR" />
+    <result column="debank_id" property="debankId" jdbcType="VARCHAR" />
+    <result column="name_en" property="nameEn" jdbcType="VARCHAR" />
+    <result column="name_ch" property="nameCh" jdbcType="VARCHAR" />
+    <result column="priority" property="priority" jdbcType="INTEGER" />
+    <result column="site_url" property="siteUrl" jdbcType="VARCHAR" />
+    <result column="contract_call" property="contractCall" jdbcType="VARCHAR" />
+    <result column="contract_user" property="contractUser" jdbcType="VARCHAR" />
+    <result column="platform_token_id" property="platformTokenId" jdbcType="VARCHAR" />
+    <result column="spider_date" property="spiderDate" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="tvl" property="tvl" jdbcType="VARCHAR" />
+    <result column="borrow" property="borrow" jdbcType="VARCHAR" />
+    <result column="trade_volume" property="tradeVolume" jdbcType="VARCHAR" />
+    <result column="trade_count" property="tradeCount" jdbcType="VARCHAR" />
+    <result column="oracle_call" property="oracleCall" jdbcType="VARCHAR" />
+    <result column="trade_user" property="tradeUser" jdbcType="VARCHAR" />
+    <result column="liquidate" property="liquidate" jdbcType="VARCHAR" />
+    <result column="oracle_contr" property="oracleContr" jdbcType="VARCHAR" />
+    <result column="category_en" property="categoryEn" jdbcType="VARCHAR" />
+    <result column="category_ch" property="categoryCh" jdbcType="VARCHAR" />
+    <result column="debank_project_url" property="debankProjectUrl" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, chain, debank_id, name_en, name_ch, priority, site_url, contract_call, contract_user, 
+    platform_token_id, spider_date, create_time, tvl, borrow, trade_volume, trade_count, 
+    oracle_call, trade_user, liquidate, oracle_contr, category_en, category_ch, debank_project_url
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from debank_data
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from debank_data
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.happy.video.pojo.DebankData" >
+    insert into debank_data (id, chain, debank_id, 
+      name_en, name_ch, priority, 
+      site_url, contract_call, contract_user, 
+      platform_token_id, spider_date, create_time, 
+      tvl, borrow, trade_volume, 
+      trade_count, oracle_call, trade_user, 
+      liquidate, oracle_contr, category_en, 
+      category_ch, debank_project_url)
+    values (#{id,jdbcType=INTEGER}, #{chain,jdbcType=VARCHAR}, #{debankId,jdbcType=VARCHAR}, 
+      #{nameEn,jdbcType=VARCHAR}, #{nameCh,jdbcType=VARCHAR}, #{priority,jdbcType=INTEGER}, 
+      #{siteUrl,jdbcType=VARCHAR}, #{contractCall,jdbcType=VARCHAR}, #{contractUser,jdbcType=VARCHAR}, 
+      #{platformTokenId,jdbcType=VARCHAR}, #{spiderDate,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{tvl,jdbcType=VARCHAR}, #{borrow,jdbcType=VARCHAR}, #{tradeVolume,jdbcType=VARCHAR}, 
+      #{tradeCount,jdbcType=VARCHAR}, #{oracleCall,jdbcType=VARCHAR}, #{tradeUser,jdbcType=VARCHAR}, 
+      #{liquidate,jdbcType=VARCHAR}, #{oracleContr,jdbcType=VARCHAR}, #{categoryEn,jdbcType=VARCHAR}, 
+      #{categoryCh,jdbcType=VARCHAR}, #{debankProjectUrl,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.happy.video.pojo.DebankData" >
+    insert into debank_data
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="chain != null" >
+        chain,
+      </if>
+      <if test="debankId != null" >
+        debank_id,
+      </if>
+      <if test="nameEn != null" >
+        name_en,
+      </if>
+      <if test="nameCh != null" >
+        name_ch,
+      </if>
+      <if test="priority != null" >
+        priority,
+      </if>
+      <if test="siteUrl != null" >
+        site_url,
+      </if>
+      <if test="contractCall != null" >
+        contract_call,
+      </if>
+      <if test="contractUser != null" >
+        contract_user,
+      </if>
+      <if test="platformTokenId != null" >
+        platform_token_id,
+      </if>
+      <if test="spiderDate != null" >
+        spider_date,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="tvl != null" >
+        tvl,
+      </if>
+      <if test="borrow != null" >
+        borrow,
+      </if>
+      <if test="tradeVolume != null" >
+        trade_volume,
+      </if>
+      <if test="tradeCount != null" >
+        trade_count,
+      </if>
+      <if test="oracleCall != null" >
+        oracle_call,
+      </if>
+      <if test="tradeUser != null" >
+        trade_user,
+      </if>
+      <if test="liquidate != null" >
+        liquidate,
+      </if>
+      <if test="oracleContr != null" >
+        oracle_contr,
+      </if>
+      <if test="categoryEn != null" >
+        category_en,
+      </if>
+      <if test="categoryCh != null" >
+        category_ch,
+      </if>
+      <if test="debankProjectUrl != null" >
+        debank_project_url,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="chain != null" >
+        #{chain,jdbcType=VARCHAR},
+      </if>
+      <if test="debankId != null" >
+        #{debankId,jdbcType=VARCHAR},
+      </if>
+      <if test="nameEn != null" >
+        #{nameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="nameCh != null" >
+        #{nameCh,jdbcType=VARCHAR},
+      </if>
+      <if test="priority != null" >
+        #{priority,jdbcType=INTEGER},
+      </if>
+      <if test="siteUrl != null" >
+        #{siteUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="contractCall != null" >
+        #{contractCall,jdbcType=VARCHAR},
+      </if>
+      <if test="contractUser != null" >
+        #{contractUser,jdbcType=VARCHAR},
+      </if>
+      <if test="platformTokenId != null" >
+        #{platformTokenId,jdbcType=VARCHAR},
+      </if>
+      <if test="spiderDate != null" >
+        #{spiderDate,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tvl != null" >
+        #{tvl,jdbcType=VARCHAR},
+      </if>
+      <if test="borrow != null" >
+        #{borrow,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeVolume != null" >
+        #{tradeVolume,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeCount != null" >
+        #{tradeCount,jdbcType=VARCHAR},
+      </if>
+      <if test="oracleCall != null" >
+        #{oracleCall,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeUser != null" >
+        #{tradeUser,jdbcType=VARCHAR},
+      </if>
+      <if test="liquidate != null" >
+        #{liquidate,jdbcType=VARCHAR},
+      </if>
+      <if test="oracleContr != null" >
+        #{oracleContr,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryEn != null" >
+        #{categoryEn,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryCh != null" >
+        #{categoryCh,jdbcType=VARCHAR},
+      </if>
+      <if test="debankProjectUrl != null" >
+        #{debankProjectUrl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.happy.video.pojo.DebankData" >
+    update debank_data
+    <set >
+      <if test="chain != null" >
+        chain = #{chain,jdbcType=VARCHAR},
+      </if>
+      <if test="debankId != null" >
+        debank_id = #{debankId,jdbcType=VARCHAR},
+      </if>
+      <if test="nameEn != null" >
+        name_en = #{nameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="nameCh != null" >
+        name_ch = #{nameCh,jdbcType=VARCHAR},
+      </if>
+      <if test="priority != null" >
+        priority = #{priority,jdbcType=INTEGER},
+      </if>
+      <if test="siteUrl != null" >
+        site_url = #{siteUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="contractCall != null" >
+        contract_call = #{contractCall,jdbcType=VARCHAR},
+      </if>
+      <if test="contractUser != null" >
+        contract_user = #{contractUser,jdbcType=VARCHAR},
+      </if>
+      <if test="platformTokenId != null" >
+        platform_token_id = #{platformTokenId,jdbcType=VARCHAR},
+      </if>
+      <if test="spiderDate != null" >
+        spider_date = #{spiderDate,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tvl != null" >
+        tvl = #{tvl,jdbcType=VARCHAR},
+      </if>
+      <if test="borrow != null" >
+        borrow = #{borrow,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeVolume != null" >
+        trade_volume = #{tradeVolume,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeCount != null" >
+        trade_count = #{tradeCount,jdbcType=VARCHAR},
+      </if>
+      <if test="oracleCall != null" >
+        oracle_call = #{oracleCall,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeUser != null" >
+        trade_user = #{tradeUser,jdbcType=VARCHAR},
+      </if>
+      <if test="liquidate != null" >
+        liquidate = #{liquidate,jdbcType=VARCHAR},
+      </if>
+      <if test="oracleContr != null" >
+        oracle_contr = #{oracleContr,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryEn != null" >
+        category_en = #{categoryEn,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryCh != null" >
+        category_ch = #{categoryCh,jdbcType=VARCHAR},
+      </if>
+      <if test="debankProjectUrl != null" >
+        debank_project_url = #{debankProjectUrl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.happy.video.pojo.DebankData" >
+    update debank_data
+    set chain = #{chain,jdbcType=VARCHAR},
+      debank_id = #{debankId,jdbcType=VARCHAR},
+      name_en = #{nameEn,jdbcType=VARCHAR},
+      name_ch = #{nameCh,jdbcType=VARCHAR},
+      priority = #{priority,jdbcType=INTEGER},
+      site_url = #{siteUrl,jdbcType=VARCHAR},
+      contract_call = #{contractCall,jdbcType=VARCHAR},
+      contract_user = #{contractUser,jdbcType=VARCHAR},
+      platform_token_id = #{platformTokenId,jdbcType=VARCHAR},
+      spider_date = #{spiderDate,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      tvl = #{tvl,jdbcType=VARCHAR},
+      borrow = #{borrow,jdbcType=VARCHAR},
+      trade_volume = #{tradeVolume,jdbcType=VARCHAR},
+      trade_count = #{tradeCount,jdbcType=VARCHAR},
+      oracle_call = #{oracleCall,jdbcType=VARCHAR},
+      trade_user = #{tradeUser,jdbcType=VARCHAR},
+      liquidate = #{liquidate,jdbcType=VARCHAR},
+      oracle_contr = #{oracleContr,jdbcType=VARCHAR},
+      category_en = #{categoryEn,jdbcType=VARCHAR},
+      category_ch = #{categoryCh,jdbcType=VARCHAR},
+      debank_project_url = #{debankProjectUrl,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

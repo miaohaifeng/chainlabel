@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.happy.video.mapper.DappradarAppMapper" >
+  <resultMap id="BaseResultMap" type="com.happy.video.pojo.DappradarApp" >
+    <result column="dappradar_id" property="dappradarId" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="category" property="category" jdbcType="VARCHAR" />
+    <result column="protocal" property="protocal" jdbcType="VARCHAR" />
+    <result column="spider_date" property="spiderDate" jdbcType="VARCHAR" />
+    <result column="site_url" property="siteUrl" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="deeplink" property="deeplink" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    dappradar_id, name, category,
+    protocal, spider_date, site_url,
+    create_time, deeplink
+  </sql>
+
+  <select id="selectByDate" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from dappradar_app
+    where spider_date = #{date}
+  </select>
+  <update id="updateByPrimaryKeySelective" parameterType="com.happy.video.pojo.DappradarApp">
+    update dappradar_app
+    set site_url=#{siteUrl,jdbcType=VARCHAR}
+    where dappradar_id = #{dappradarId,jdbcType=INTEGER}
+  </update>
+
+
+  <insert id="insert" parameterType="com.happy.video.pojo.DappradarApp" >
+    insert into dappradar_app (dappradar_id, name, category, 
+      protocal, spider_date, site_url, 
+      create_time, deeplink)
+    values (#{dappradarId,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{category,jdbcType=VARCHAR}, 
+      #{protocal,jdbcType=VARCHAR}, #{spiderDate,jdbcType=VARCHAR}, #{siteUrl,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{deeplink,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.happy.video.pojo.DappradarApp" >
+    insert into dappradar_app
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="dappradarId != null" >
+        dappradar_id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="category != null" >
+        category,
+      </if>
+      <if test="protocal != null" >
+        protocal,
+      </if>
+      <if test="spiderDate != null" >
+        spider_date,
+      </if>
+      <if test="siteUrl != null" >
+        site_url,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="deeplink != null" >
+        deeplink,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="dappradarId != null" >
+        #{dappradarId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="category != null" >
+        #{category,jdbcType=VARCHAR},
+      </if>
+      <if test="protocal != null" >
+        #{protocal,jdbcType=VARCHAR},
+      </if>
+      <if test="spiderDate != null" >
+        #{spiderDate,jdbcType=VARCHAR},
+      </if>
+      <if test="siteUrl != null" >
+        #{siteUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deeplink != null" >
+        #{deeplink,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

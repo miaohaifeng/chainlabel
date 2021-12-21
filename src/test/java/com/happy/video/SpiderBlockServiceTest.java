@@ -110,7 +110,7 @@ public class SpiderBlockServiceTest {
             System.out.println(exchangeNoSet.size() + "," + i[0] + "," + exchangeNumber);
             try {
                 ExchangeInfo exchangeInfo = getExchangeInfo(exchangeNumber);
-                SleepUtils.sleep();
+//                SleepUtils.sleep();
                 spiderBlockService.insertExchangeInfo(exchangeInfo);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -130,7 +130,7 @@ public class SpiderBlockServiceTest {
             i.getAndIncrement();
             System.out.println(exchangeInfos.size()+","+ i);
             try {
-                SleepUtils.sleep();
+//                SleepUtils.sleep();
                 String no = exchangeInfo.getNo();
 
                 String html = HttpUtils.getHtml("https://www.wikibit.cn/Ajax/GetTransType?evaluationCode=" + no);
@@ -169,7 +169,7 @@ public class SpiderBlockServiceTest {
             i.getAndIncrement();
             try {
                 LinkedList<SupervisorInfo> supervisorInfoList = getSupervisorInfoList(exchangeNumber);
-                SleepUtils.sleep();
+//                SleepUtils.sleep();
                 System.out.println("休眠" + i + "次" + exchangeNoSet.size());
                 for (int j = 0; j < supervisorInfoList.size(); j++) {
                     try {
@@ -197,7 +197,7 @@ public class SpiderBlockServiceTest {
             if (set.contains(supervisorInfo.getLicenceNumber())) {
                 continue;
             }
-            SleepUtils.sleep();
+//            SleepUtils.sleep();
             FileUtils.downLoadFromUrl(supervisorInfo.getLicenceFileUrl(), supervisorInfo.getLicenceNumber() + ".png", savePath);
             set.add(supervisorInfo.getLicenceNumber());
         }
@@ -224,7 +224,7 @@ public class SpiderBlockServiceTest {
             System.out.println(countySet.size() + "," + i);
             String next = iterator.next();
             String[] split = next.split("-");
-            SleepUtils.sleep();
+//            SleepUtils.sleep();
             FileUtils.downLoadFromUrl(split[1], split[0] + ".png", savePath);
         }
 
@@ -251,7 +251,7 @@ public class SpiderBlockServiceTest {
             System.out.println(set.size() + "," + i);
             String next = iterator.next();
             String[] split = next.split("-");
-            SleepUtils.sleep();
+//            SleepUtils.sleep();
             FileUtils.downLoadFromUrl(split[1], split[0] + ".png", savePath);
         }
 
@@ -275,7 +275,7 @@ public class SpiderBlockServiceTest {
 
         for (int i = 0; i < exchange.size(); i++) {
             LinkedList<SupervisorInfo> supervisorInfoList = getSupervisorInfoList(exchange.get(i));
-            SleepUtils.sleep();
+//            SleepUtils.sleep();
             System.out.println("休眠" + i + "次");
             for (int j = 0; j < supervisorInfoList.size(); j++) {
                 try {
@@ -311,7 +311,7 @@ public class SpiderBlockServiceTest {
             System.out.println("platformSet:" + platformSet.size() + "," + i);
             try {
                 String html = HttpUtils.getHtml("https://www.wikibit.cn/search.html?keyword=" + platform);
-                SleepUtils.sleep();
+//                SleepUtils.sleep();
                 Document doc = Jsoup.parse(html);
 //                Document doc = Jsoup.parse(new File("/Users/haifeng/Desktop/ok/spider/kraken-search.html"), "UTF-8");
                 Elements elementsUl = doc.select(".isJYS");
@@ -336,7 +336,7 @@ public class SpiderBlockServiceTest {
             System.out.println("platformNameSet:" + platformNameSet.size() + "," + j);
             try {
                 String html = HttpUtils.getHtml("https://www.wikibit.cn/search.html?keyword=" + platformName);
-                SleepUtils.sleep();
+//                SleepUtils.sleep();
                 Document doc = Jsoup.parse(html);
 //                Document doc = Jsoup.parse(new File("/Users/haifeng/Desktop/ok/spider/kraken-search.html"), "UTF-8");
                 Elements elementsUl = doc.select(".isJYS");

@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.happy.video.mapper.ProjectAllPlatformMapper" >
+  <resultMap id="BaseResultMap" type="com.happy.video.pojo.ProjectAllPlatform" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="unique_site_url" property="uniqueSiteUrl" jdbcType="VARCHAR" />
+    <result column="debank_id" property="debankId" jdbcType="VARCHAR" />
+    <result column="debank_name" property="debankName" jdbcType="VARCHAR" />
+    <result column="debank_site_url" property="debankSiteUrl" jdbcType="VARCHAR" />
+    <result column="bsc_id" property="bscId" jdbcType="VARCHAR" />
+    <result column="bsc_name" property="bscName" jdbcType="VARCHAR" />
+    <result column="bsc_site_url" property="bscSiteUrl" jdbcType="VARCHAR" />
+    <result column="huobi_ib" property="huobiIb" jdbcType="VARCHAR" />
+    <result column="huobi_name" property="huobiName" jdbcType="VARCHAR" />
+    <result column="huobi_site_url" property="huobiSiteUrl" jdbcType="VARCHAR" />
+    <result column="dappar_id" property="dapparId" jdbcType="VARCHAR" />
+    <result column="dappar_name" property="dapparName" jdbcType="VARCHAR" />
+    <result column="dappar_site_url" property="dapparSiteUrl" jdbcType="VARCHAR" />
+    <result column="chain" property="chain" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, unique_site_url, debank_id, debank_name, debank_site_url, bsc_id, bsc_name, bsc_site_url, 
+    huobi_ib, huobi_name, huobi_site_url, dappar_id, dappar_name, dappar_site_url, chain, 
+    create_time
+  </sql>
+
+  <select id="selectAll" resultMap="BaseResultMap"  >
+    select
+    <include refid="Base_Column_List" />
+    from project_all_platform
+  </select>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from project_all_platform
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from project_all_platform
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.happy.video.pojo.ProjectAllPlatform" >
+    insert into project_all_platform (id, unique_site_url, debank_id, 
+      debank_name, debank_site_url, bsc_id, 
+      bsc_name, bsc_site_url, huobi_ib, 
+      huobi_name, huobi_site_url, dappar_id, 
+      dappar_name, dappar_site_url, chain, 
+      create_time)
+    values (#{id,jdbcType=INTEGER}, #{uniqueSiteUrl,jdbcType=VARCHAR}, #{debankId,jdbcType=VARCHAR}, 
+      #{debankName,jdbcType=VARCHAR}, #{debankSiteUrl,jdbcType=VARCHAR}, #{bscId,jdbcType=VARCHAR}, 
+      #{bscName,jdbcType=VARCHAR}, #{bscSiteUrl,jdbcType=VARCHAR}, #{huobiIb,jdbcType=VARCHAR}, 
+      #{huobiName,jdbcType=VARCHAR}, #{huobiSiteUrl,jdbcType=VARCHAR}, #{dapparId,jdbcType=VARCHAR}, 
+      #{dapparName,jdbcType=VARCHAR}, #{dapparSiteUrl,jdbcType=VARCHAR}, #{chain,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+
+  <insert id="insertSelective" parameterType="com.happy.video.pojo.ProjectAllPlatform" >
+    insert into project_all_platform
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="uniqueSiteUrl != null" >
+        unique_site_url,
+      </if>
+      <if test="debankId != null" >
+        debank_id,
+      </if>
+      <if test="debankName != null" >
+        debank_name,
+      </if>
+      <if test="debankSiteUrl != null" >
+        debank_site_url,
+      </if>
+      <if test="bscId != null" >
+        bsc_id,
+      </if>
+      <if test="bscName != null" >
+        bsc_name,
+      </if>
+      <if test="bscSiteUrl != null" >
+        bsc_site_url,
+      </if>
+      <if test="huobiIb != null" >
+        huobi_ib,
+      </if>
+      <if test="huobiName != null" >
+        huobi_name,
+      </if>
+      <if test="huobiSiteUrl != null" >
+        huobi_site_url,
+      </if>
+      <if test="dapparId != null" >
+        dappar_id,
+      </if>
+      <if test="dapparName != null" >
+        dappar_name,
+      </if>
+      <if test="dapparSiteUrl != null" >
+        dappar_site_url,
+      </if>
+      <if test="chain != null" >
+        chain,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="uniqueSiteUrl != null" >
+        #{uniqueSiteUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="debankId != null" >
+        #{debankId,jdbcType=VARCHAR},
+      </if>
+      <if test="debankName != null" >
+        #{debankName,jdbcType=VARCHAR},
+      </if>
+      <if test="debankSiteUrl != null" >
+        #{debankSiteUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="bscId != null" >
+        #{bscId,jdbcType=VARCHAR},
+      </if>
+      <if test="bscName != null" >
+        #{bscName,jdbcType=VARCHAR},
+      </if>
+      <if test="bscSiteUrl != null" >
+        #{bscSiteUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="huobiIb != null" >
+        #{huobiIb,jdbcType=VARCHAR},
+      </if>
+      <if test="huobiName != null" >
+        #{huobiName,jdbcType=VARCHAR},
+      </if>
+      <if test="huobiSiteUrl != null" >
+        #{huobiSiteUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="dapparId != null" >
+        #{dapparId,jdbcType=VARCHAR},
+      </if>
+      <if test="dapparName != null" >
+        #{dapparName,jdbcType=VARCHAR},
+      </if>
+      <if test="dapparSiteUrl != null" >
+        #{dapparSiteUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="chain != null" >
+        #{chain,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.happy.video.pojo.ProjectAllPlatform" >
+    update project_all_platform
+    <set >
+      <if test="uniqueSiteUrl != null" >
+        unique_site_url = #{uniqueSiteUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="debankId != null" >
+        debank_id = #{debankId,jdbcType=VARCHAR},
+      </if>
+      <if test="debankName != null" >
+        debank_name = #{debankName,jdbcType=VARCHAR},
+      </if>
+      <if test="debankSiteUrl != null" >
+        debank_site_url = #{debankSiteUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="bscId != null" >
+        bsc_id = #{bscId,jdbcType=VARCHAR},
+      </if>
+      <if test="bscName != null" >
+        bsc_name = #{bscName,jdbcType=VARCHAR},
+      </if>
+      <if test="bscSiteUrl != null" >
+        bsc_site_url = #{bscSiteUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="huobiIb != null" >
+        huobi_ib = #{huobiIb,jdbcType=VARCHAR},
+      </if>
+      <if test="huobiName != null" >
+        huobi_name = #{huobiName,jdbcType=VARCHAR},
+      </if>
+      <if test="huobiSiteUrl != null" >
+        huobi_site_url = #{huobiSiteUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="dapparId != null" >
+        dappar_id = #{dapparId,jdbcType=VARCHAR},
+      </if>
+      <if test="dapparName != null" >
+        dappar_name = #{dapparName,jdbcType=VARCHAR},
+      </if>
+      <if test="dapparSiteUrl != null" >
+        dappar_site_url = #{dapparSiteUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="chain != null" >
+        chain = #{chain,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.happy.video.pojo.ProjectAllPlatform" >
+    update project_all_platform
+    set unique_site_url = #{uniqueSiteUrl,jdbcType=VARCHAR},
+      debank_id = #{debankId,jdbcType=VARCHAR},
+      debank_name = #{debankName,jdbcType=VARCHAR},
+      debank_site_url = #{debankSiteUrl,jdbcType=VARCHAR},
+      bsc_id = #{bscId,jdbcType=VARCHAR},
+      bsc_name = #{bscName,jdbcType=VARCHAR},
+      bsc_site_url = #{bscSiteUrl,jdbcType=VARCHAR},
+      huobi_ib = #{huobiIb,jdbcType=VARCHAR},
+      huobi_name = #{huobiName,jdbcType=VARCHAR},
+      huobi_site_url = #{huobiSiteUrl,jdbcType=VARCHAR},
+      dappar_id = #{dapparId,jdbcType=VARCHAR},
+      dappar_name = #{dapparName,jdbcType=VARCHAR},
+      dappar_site_url = #{dapparSiteUrl,jdbcType=VARCHAR},
+      chain = #{chain,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

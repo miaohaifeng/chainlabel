@@ -9,7 +9,6 @@ import com.happy.video.pojo.SupervisorInfo;
 import com.happy.video.toolbox.util.HttpUtils;
 import com.happy.video.vo.Data;
 import com.happy.video.vo.Root;
-import com.sun.xml.internal.bind.v2.TODO;
 import lombok.val;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -25,7 +24,7 @@ public class JsoupExchangeTest {
 
     @Test
     public void parseTradeType() {
-        String html = HttpUtils.getHtml("https://www.wikibit.cn/Ajax/GetTransType?evaluationCode=1399929983720");
+        String html = HttpUtils.getHtml("https://app.aave.com");
 
 
 //        JSON.parseObject(html,new Feature[]

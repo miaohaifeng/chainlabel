@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.happy.video.mapper.DebankSupportProtocalMapper" >
+  <resultMap id="BaseResultMap" type="com.happy.video.pojo.DebankSupportProtocal" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="chain" property="chain" jdbcType="VARCHAR" />
+    <result column="debank_id" property="debankId" jdbcType="VARCHAR" />
+    <result column="name_en" property="nameEn" jdbcType="VARCHAR" />
+    <result column="name_ch" property="nameCh" jdbcType="VARCHAR" />
+    <result column="priority" property="priority" jdbcType="INTEGER" />
+    <result column="site_url" property="siteUrl" jdbcType="VARCHAR" />
+    <result column="platform_token_id" property="platformTokenId" jdbcType="VARCHAR" />
+    <result column="spider_date" property="spiderDate" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, chain, debank_id, name_en, name_ch, priority, site_url, platform_token_id, spider_date
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from debank_support_protocal
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectByDate" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from debank_support_protocal
+    where spider_date = #{date}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from debank_support_protocal
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from debank_support_protocal
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.happy.video.pojo.DebankSupportProtocal" >
+    insert into debank_support_protocal (id, chain, debank_id, 
+      name_en, name_ch, priority, 
+      site_url, platform_token_id, spider_date
+      )
+    values (#{id,jdbcType=INTEGER}, #{chain,jdbcType=VARCHAR}, #{debankId,jdbcType=VARCHAR}, 
+      #{nameEn,jdbcType=VARCHAR}, #{nameCh,jdbcType=VARCHAR}, #{priority,jdbcType=INTEGER}, 
+      #{siteUrl,jdbcType=VARCHAR}, #{platformTokenId,jdbcType=VARCHAR}, #{spiderDate,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.happy.video.pojo.DebankSupportProtocal" >
+    insert into debank_support_protocal
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="chain != null" >
+        chain,
+      </if>
+      <if test="debankId != null" >
+        debank_id,
+      </if>
+      <if test="nameEn != null" >
+        name_en,
+      </if>
+      <if test="nameCh != null" >
+        name_ch,
+      </if>
+      <if test="priority != null" >
+        priority,
+      </if>
+      <if test="siteUrl != null" >
+        site_url,
+      </if>
+      <if test="platformTokenId != null" >
+        platform_token_id,
+      </if>
+      <if test="spiderDate != null" >
+        spider_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="chain != null" >
+        #{chain,jdbcType=VARCHAR},
+      </if>
+      <if test="debankId != null" >
+        #{debankId,jdbcType=VARCHAR},
+      </if>
+      <if test="nameEn != null" >
+        #{nameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="nameCh != null" >
+        #{nameCh,jdbcType=VARCHAR},
+      </if>
+      <if test="priority != null" >
+        #{priority,jdbcType=INTEGER},
+      </if>
+      <if test="siteUrl != null" >
+        #{siteUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="platformTokenId != null" >
+        #{platformTokenId,jdbcType=VARCHAR},
+      </if>
+      <if test="spiderDate != null" >
+        #{spiderDate,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.happy.video.pojo.DebankSupportProtocal" >
+    update debank_support_protocal
+    <set >
+      <if test="chain != null" >
+        chain = #{chain,jdbcType=VARCHAR},
+      </if>
+      <if test="debankId != null" >
+        debank_id = #{debankId,jdbcType=VARCHAR},
+      </if>
+      <if test="nameEn != null" >
+        name_en = #{nameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="nameCh != null" >
+        name_ch = #{nameCh,jdbcType=VARCHAR},
+      </if>
+      <if test="priority != null" >
+        priority = #{priority,jdbcType=INTEGER},
+      </if>
+      <if test="siteUrl != null" >
+        site_url = #{siteUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="platformTokenId != null" >
+        platform_token_id = #{platformTokenId,jdbcType=VARCHAR},
+      </if>
+      <if test="spiderDate != null" >
+        spider_date = #{spiderDate,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.happy.video.pojo.DebankSupportProtocal" >
+    update debank_support_protocal
+    set chain = #{chain,jdbcType=VARCHAR},
+      debank_id = #{debankId,jdbcType=VARCHAR},
+      name_en = #{nameEn,jdbcType=VARCHAR},
+      name_ch = #{nameCh,jdbcType=VARCHAR},
+      priority = #{priority,jdbcType=INTEGER},
+      site_url = #{siteUrl,jdbcType=VARCHAR},
+      platform_token_id = #{platformTokenId,jdbcType=VARCHAR},
+      spider_date = #{spiderDate,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

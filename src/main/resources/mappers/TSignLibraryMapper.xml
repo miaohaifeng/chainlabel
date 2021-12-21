@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.happy.video.mapper.TSignLibraryMapper" >
+  <resultMap id="BaseResultMap" type="com.happy.video.pojo.TSignLibrary" >
+    <id column="f_id" property="fId" jdbcType="INTEGER" />
+    <result column="f_sign_id" property="fSignId" jdbcType="VARCHAR" />
+    <result column="f_sign_created_at" property="fSignCreatedAt" jdbcType="VARCHAR" />
+    <result column="f_sign_text_signature" property="fSignTextSignature" jdbcType="VARCHAR" />
+    <result column="f_sign_hex_signature" property="fSignHexSignature" jdbcType="VARCHAR" />
+    <result column="f_sign_bytes_signature" property="fSignBytesSignature" jdbcType="VARCHAR" />
+    <result column="action" property="action" jdbcType="VARCHAR" />
+    <result column="f_type" property="fType" jdbcType="VARCHAR" />
+    <result column="f_create_at" property="fCreateAt" jdbcType="VARCHAR" />
+    <result column="f_update_at" property="fUpdateAt" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    f_id, f_sign_id, f_sign_created_at, f_sign_text_signature, f_sign_hex_signature, 
+    f_sign_bytes_signature, action, f_type, f_create_at, f_update_at
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_sign_library
+    where f_id = #{fId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_sign_library
+    where f_id = #{fId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.happy.video.pojo.TSignLibrary" >
+    insert into t_sign_library (f_id, f_sign_id, f_sign_created_at, 
+      f_sign_text_signature, f_sign_hex_signature, 
+      f_sign_bytes_signature, action, f_type, 
+      f_create_at, f_update_at)
+    values (#{fId,jdbcType=INTEGER}, #{fSignId,jdbcType=VARCHAR}, #{fSignCreatedAt,jdbcType=VARCHAR}, 
+      #{fSignTextSignature,jdbcType=VARCHAR}, #{fSignHexSignature,jdbcType=VARCHAR}, 
+      #{fSignBytesSignature,jdbcType=VARCHAR}, #{action,jdbcType=VARCHAR}, #{fType,jdbcType=VARCHAR}, 
+      #{fCreateAt,jdbcType=VARCHAR}, #{fUpdateAt,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.happy.video.pojo.TSignLibrary" >
+    insert into t_sign_library
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="fId != null" >
+        f_id,
+      </if>
+      <if test="fSignId != null" >
+        f_sign_id,
+      </if>
+      <if test="fSignCreatedAt != null" >
+        f_sign_created_at,
+      </if>
+      <if test="fSignTextSignature != null" >
+        f_sign_text_signature,
+      </if>
+      <if test="fSignHexSignature != null" >
+        f_sign_hex_signature,
+      </if>
+      <if test="fSignBytesSignature != null" >
+        f_sign_bytes_signature,
+      </if>
+      <if test="action != null" >
+        action,
+      </if>
+      <if test="fType != null" >
+        f_type,
+      </if>
+      <if test="fCreateAt != null" >
+        f_create_at,
+      </if>
+      <if test="fUpdateAt != null" >
+        f_update_at,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="fId != null" >
+        #{fId,jdbcType=INTEGER},
+      </if>
+      <if test="fSignId != null" >
+        #{fSignId,jdbcType=VARCHAR},
+      </if>
+      <if test="fSignCreatedAt != null" >
+        #{fSignCreatedAt,jdbcType=VARCHAR},
+      </if>
+      <if test="fSignTextSignature != null" >
+        #{fSignTextSignature,jdbcType=VARCHAR},
+      </if>
+      <if test="fSignHexSignature != null" >
+        #{fSignHexSignature,jdbcType=VARCHAR},
+      </if>
+      <if test="fSignBytesSignature != null" >
+        #{fSignBytesSignature,jdbcType=VARCHAR},
+      </if>
+      <if test="action != null" >
+        #{action,jdbcType=VARCHAR},
+      </if>
+      <if test="fType != null" >
+        #{fType,jdbcType=VARCHAR},
+      </if>
+      <if test="fCreateAt != null" >
+        #{fCreateAt,jdbcType=VARCHAR},
+      </if>
+      <if test="fUpdateAt != null" >
+        #{fUpdateAt,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.happy.video.pojo.TSignLibrary" >
+    update t_sign_library
+    <set >
+      <if test="fSignId != null" >
+        f_sign_id = #{fSignId,jdbcType=VARCHAR},
+      </if>
+      <if test="fSignCreatedAt != null" >
+        f_sign_created_at = #{fSignCreatedAt,jdbcType=VARCHAR},
+      </if>
+      <if test="fSignTextSignature != null" >
+        f_sign_text_signature = #{fSignTextSignature,jdbcType=VARCHAR},
+      </if>
+      <if test="fSignHexSignature != null" >
+        f_sign_hex_signature = #{fSignHexSignature,jdbcType=VARCHAR},
+      </if>
+      <if test="fSignBytesSignature != null" >
+        f_sign_bytes_signature = #{fSignBytesSignature,jdbcType=VARCHAR},
+      </if>
+      <if test="action != null" >
+        action = #{action,jdbcType=VARCHAR},
+      </if>
+      <if test="fType != null" >
+        f_type = #{fType,jdbcType=VARCHAR},
+      </if>
+      <if test="fCreateAt != null" >
+        f_create_at = #{fCreateAt,jdbcType=VARCHAR},
+      </if>
+      <if test="fUpdateAt != null" >
+        f_update_at = #{fUpdateAt,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where f_id = #{fId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.happy.video.pojo.TSignLibrary" >
+    update t_sign_library
+    set f_sign_id = #{fSignId,jdbcType=VARCHAR},
+      f_sign_created_at = #{fSignCreatedAt,jdbcType=VARCHAR},
+      f_sign_text_signature = #{fSignTextSignature,jdbcType=VARCHAR},
+      f_sign_hex_signature = #{fSignHexSignature,jdbcType=VARCHAR},
+      f_sign_bytes_signature = #{fSignBytesSignature,jdbcType=VARCHAR},
+      action = #{action,jdbcType=VARCHAR},
+      f_type = #{fType,jdbcType=VARCHAR},
+      f_create_at = #{fCreateAt,jdbcType=VARCHAR},
+      f_update_at = #{fUpdateAt,jdbcType=VARCHAR}
+    where f_id = #{fId,jdbcType=INTEGER}
+  </update>
+</mapper>
