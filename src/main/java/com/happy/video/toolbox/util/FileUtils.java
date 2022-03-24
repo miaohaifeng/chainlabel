@@ -70,6 +70,29 @@ public class FileUtils {
         return bos.toByteArray();
     }
 
+    /*
+     * 读取文件
+     */
+    public String read(String fileName) {
+        File f = new File(fileName);
+        if (!f.exists()) {
+            return "File not found!";
+        }
+        FileInputStream fs;
+        String result = null;
+        try {
+            fs = new FileInputStream(f);
+            byte[] b = new byte[fs.available()];
+            fs.read(b);
+            fs.close();
+            result = new String(b);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return result;
+    }
+
 
     public static void main(String[] args) {
         String urlStr = "https://wikibitimg.fx994.com/attach/2020/11/35042125412020102/WBE35042125412020102_85249.png_prove";
